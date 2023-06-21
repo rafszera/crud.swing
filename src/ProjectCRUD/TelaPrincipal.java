@@ -5,6 +5,7 @@ import javax.swing.table.DefaultTableModel;
 import dao.ClienteMapDAO;
 import dao.IClienteDAO;
 import domain.Cliente;
+import java.util.HashSet;
 
 
 public class TelaPrincipal extends javax.swing.JFrame {
@@ -297,9 +298,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-            
+    int linhaSelecionada = tabelaClientes.getSelectedRow();
+    if (linhaSelecionada >= 0) {
+           // Atualiza os dados do cliente com base nos campos de edição
+        String nome = txtNome.getText();
+        String cpf = txtCPF.getText();
         
-        
+
+
+        modelo.setValueAt(nome, linhaSelecionada, 0);
+        modelo.setValueAt(cpf, linhaSelecionada, 1);
+
+        // Limpa os campos de edição
+        txtNome.setText("");
+        txtCPF.setText("");
+    }
+     
+    
     }//GEN-LAST:event_btnEditarActionPerformed
     private void txtEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnderecoActionPerformed
         // TODO add your handling code here:
